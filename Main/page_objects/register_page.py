@@ -1,13 +1,21 @@
+import time
+
+import self
 from selenium.webdriver.common.by import By
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class RegisterPage:
+    # def __init__(self, driver):
+    #     self.driver = webdriver.Chrome(ChromeDriverManager().install())
 
     def __init__(self, driver):
         self.driver = driver
 
     def get_register_btn(self):
-        return self.driver.find_element_by_id(By.XPATH, "//a[contains(text(), 'Register')]")
+        return self.driver.find_element(By.XPATH, "//a[contains(text(), 'Register')]")
 
     def get_first_name(self):
         return self.driver.find_element(By.ID, "customer.firstName")
@@ -36,9 +44,12 @@ class RegisterPage:
     def get_password(self):
         return self.driver.find_element(By.ID, "customer.password")
 
-
     def get_password_confirm(self):
         return self.driver.find_element(By.ID, "customer.repeatedPassword")
 
 
-
+if __name__ == '__main__':
+    register_page = RegisterPage()
+    register_page.get_register_btn().click()
+    register_page.get_first_name().send_keys("James")
+    time.sleep(10)
