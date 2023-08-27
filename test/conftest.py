@@ -3,7 +3,6 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 
-
 # web driver initilization
 from utilities.manage_pages import Manage_Pages
 
