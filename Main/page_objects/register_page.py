@@ -2,9 +2,7 @@ import time
 
 import self
 from selenium.webdriver.common.by import By
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
+
 
 
 class RegisterPage:
@@ -32,7 +30,7 @@ class RegisterPage:
     def get_adress_State(self):
         return self.driver.find_element(By.ID, "customer.address.state")
 
-    def get_adress_zipcodee(self):
+    def get_adress_zipcode(self):
         return self.driver.find_element(By.ID, "customer.address.zipCode")
 
     def get_customer_ssn(self):
@@ -47,9 +45,9 @@ class RegisterPage:
     def get_password_confirm(self):
         return self.driver.find_element(By.ID, "customer.repeatedPassword")
 
-
-if __name__ == '__main__':
-    register_page = RegisterPage()
-    register_page.get_register_btn().click()
-    register_page.get_first_name().send_keys("James")
-    time.sleep(10)
+#
+# if __name__ == '__main__':
+#     register_page = RegisterPage()
+#     register_page.get_register_btn().click()
+#     register_page.get_first_name().send_keys("James")
+#     time.sleep(10)

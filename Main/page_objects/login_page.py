@@ -13,4 +13,4 @@ class LoginPage:
         return self.driver.find_element(By.XPATH, "//input[@name='password']")
 
     def login_btn(self):
-        return self.driver.find_element(By.XPATH("//input[@class='button']"))
+        return self.driver.find_element(By.XPATH,"//input[@class='button']")

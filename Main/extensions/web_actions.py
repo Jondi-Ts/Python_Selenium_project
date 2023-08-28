@@ -4,7 +4,7 @@ from selenium.webdriver.remote import webelement
 class Web_Actions:
 
     @staticmethod
-    def insert_value(value, elem: webelement):
+    def insert_value(elem: webelement, value):
         elem.send_keys(value)
 
     @staticmethod
