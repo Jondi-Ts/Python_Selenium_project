@@ -1,4 +1,5 @@
 from selenium.webdriver.remote import webelement
+from selenium.webdriver.support.select import Select
 
 
 class Web_Actions:
@@ -14,3 +15,8 @@ class Web_Actions:
     @staticmethod
     def get_text(elem: webelement):
         return elem.text
+
+    @staticmethod
+    def select_from_dropdown(elem: webelement, dropwdonw_choice_text: str):
+        select = Select(elem)
+        select.select_by_visible_text(dropwdonw_choice_text)
