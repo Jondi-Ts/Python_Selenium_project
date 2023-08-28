@@ -27,7 +27,7 @@ class RegisterPage:
     def get_adress_city(self):
         return self.driver.find_element(By.ID, "customer.address.city")
 
-    def get_adress_State(self):
+    def get_adress_state(self):
         return self.driver.find_element(By.ID, "customer.address.state")
 
     def get_adress_zipcode(self):
@@ -43,7 +43,10 @@ class RegisterPage:
         return self.driver.find_element(By.ID, "customer.password")
 
     def get_password_confirm(self):
-        return self.driver.find_element(By.ID, "customer.repeatedPassword")
+        return self.driver.find_element(By.ID, "repeatedPassword")
+
+    def get_complete_registration_btn(self):
+        return self.driver.find_element(By.XPATH, "//*[@value='Register']")
 
 #
 # if __name__ == '__main__':
