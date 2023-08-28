@@ -4,9 +4,16 @@ from selenium.webdriver.common.by import By
 class AccountsOverviewPage:
     def __init__(self, driver):
         self.driver = driver
+        self.table_locator = (By.XPATH, "//table[@id='accountTable']")
 
-    def get_acount_info_taable(self):
-        return self.driver.find_element(By.XPATH, "//table[@id='accountTable']")
+    def get_table_rows(self):
+        table = self.driver.find_element(*self.table_locator)
+        return table.find_elements(By.TAG_NAME, "tr")
+
+    def get_cell_data(self, row):
+        cells = row.find_elements(By.TAG_NAME, "td")
+        cell_data = [cell.text for cell in cells]
+        return cell_data
 
     '''
         # Locate Table Elements using XPath

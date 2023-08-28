@@ -15,4 +15,4 @@ class Test_web():
         # time.sleep(2)
         # Web_Wf.log_out()
         # time.sleep(2)
-        Web_Wf.login("daniel2","daniel2")
+        Web_Wf.get_table_date("daniel2","daniel2")

@@ -13,7 +13,7 @@ class MainPage:
         return self.driver.find_element(By.XPATH, "//a[text()='Open New Account']")
 
     def acount_overview(self):
-        return self.driver.find_element(By.XPATH, "//a[text()='Accounts Overview]")
+        return self.driver.find_element(By.XPATH, "//a[text()='Accounts Overview']")
 
     def transfer_funds(self):
         return self.driver.find_element(By.XPATH, "//a[text()='Transfer Funds]")
