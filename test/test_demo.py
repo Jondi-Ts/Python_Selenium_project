@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from Main.extensions.verifications import Verifications
@@ -9,5 +11,8 @@ class Test_web():
 
 
     def test_01(self):
-        Web_Wf.register("Shir","Zvi", "Haporzim","Holon","Gush Daan", 1234567,987654321,"shirush2000", "shirush2000")
-        # Web_Wf.login("vladdu","vladdu")
+        # Web_Wf.register("Shir","Zvi", "Haporzim","Holon","Gush Daan", 1234567,987654321,"daniel2", "daniel2")
+        # time.sleep(2)
+        # Web_Wf.log_out()
+        # time.sleep(2)
+        Web_Wf.login("daniel2","daniel2")

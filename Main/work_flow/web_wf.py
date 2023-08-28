@@ -6,8 +6,8 @@ from Main.utilities.manage_pages import Manage_Pages
 class Web_Wf:
     @staticmethod
     def login(user_name: str, password: str):
-        Web_Actions.insert_text(user_name, utilities.manage_pages.Manage_Pages.login_page.get_username_field())
-        Web_Actions.insert_text(password, utilities.manage_pages.Manage_Pages.login_page.get_password_field())
+        Web_Actions.insert_text(utilities.manage_pages.Manage_Pages.login_page.get_username_field(), user_name, )
+        Web_Actions.insert_text(utilities.manage_pages.Manage_Pages.login_page.get_password_field(), password, )
         Web_Actions.click_action(utilities.manage_pages.Manage_Pages.login_page.login_btn())
 
     @staticmethod
@@ -25,3 +25,7 @@ class Web_Wf:
         Web_Actions.insert_text(utilities.manage_pages.Manage_Pages.register_page.get_password(), password)
         Web_Actions.insert_text(utilities.manage_pages.Manage_Pages.register_page.get_password_confirm(), password)
         Web_Actions.click_action(utilities.manage_pages.Manage_Pages.register_page.get_complete_registration_btn())
+
+    @staticmethod
+    def log_out():
+        Web_Actions.click_action(utilities.manage_pages.Manage_Pages.main_page.log_out_btn())
