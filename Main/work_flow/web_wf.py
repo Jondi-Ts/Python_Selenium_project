@@ -40,9 +40,9 @@ class Web_Wf:
         Web_Actions.insert_text(utilities.manage_pages.Manage_Pages.login_page.get_username_field(), user_name, )
         Web_Actions.insert_text(utilities.manage_pages.Manage_Pages.login_page.get_password_field(), password, )
         Web_Actions.click_action(utilities.manage_pages.Manage_Pages.login_page.login_btn())
-        Web_Actions.click_action(utilities.manage_pages.Manage_Pages.main_page.acount_overview())
+        Web_Actions.click_action(utilities.manage_pages.Manage_Pages.main_page.account_overview_page())
         time.sleep(2)
-        table_rows = utilities.manage_pages.Manage_Pages.acount_overview.get_table_rows()
+        table_rows = utilities.manage_pages.Manage_Pages.account_overview_page.get_table_rows()
         for table_row in table_rows:
-            cell_data = utilities.manage_pages.Manage_Pages.acount_overview.get_cell_data(table_row)
+            cell_data = utilities.manage_pages.Manage_Pages.account_overview_page.get_cell_data(table_row)
             print(f"cell data: {cell_data}")
