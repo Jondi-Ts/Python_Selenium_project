@@ -11,8 +11,9 @@ class Test_web():
 
 
     def test_01(self):
-        # Web_Wf.register("Shir","Zvi", "Haporzim","Holon","Gush Daan", 1234567,987654321,"daniel2", "daniel2")
+        # Web_Wf.register("Mickael","Jackson", "Haporzim","Holon","Gush Daan", 1234567,987654321,"daniel3", "daniel3")
         # time.sleep(2)
         # Web_Wf.log_out()
         # time.sleep(2)
-        Web_Wf.get_table_date("daniel2","daniel2")
+        # Web_Wf.login("daniel2","daniel2")
+        Web_Wf.get_table_date("daniel3","daniel3")

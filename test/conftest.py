@@ -16,6 +16,7 @@ def init_web():
     driver = init_chrome()
     # globals()["driver"] = driver
     driver.get("https://parabank.parasoft.com/parabank/index.htm?ConnType=JDBC")
+    driver.maximize_window()
     Manage_Pages.init_web_pages(driver)
     yield
     time.sleep(5)

@@ -12,7 +12,9 @@ class AccountsOverviewPage:
 
     def get_cell_data(self, row):
         cells = row.find_elements(By.TAG_NAME, "td")
-        cell_data = [cell.text for cell in cells]
+        cell_data = []
+        for cell in cells:
+            cell_data.append(cell.text)
         return cell_data
 
     '''

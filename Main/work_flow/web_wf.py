@@ -1,11 +1,14 @@
 import time
 
+import pytest
+
 from Main import utilities
 from Main.extensions.web_actions import Web_Actions
 from Main.utilities.manage_pages import Manage_Pages
 
 
 class Web_Wf:
+    # @pytest.fixture()
     @staticmethod
     def login(user_name: str, password: str):
         Web_Actions.insert_text(utilities.manage_pages.Manage_Pages.login_page.get_username_field(), user_name, )

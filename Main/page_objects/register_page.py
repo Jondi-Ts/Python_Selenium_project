@@ -1,13 +1,9 @@
-import time
 
-import self
 from selenium.webdriver.common.by import By
 
 
 
 class RegisterPage:
-    # def __init__(self, driver):
-    #     self.driver = webdriver.Chrome(ChromeDriverManager().install())
 
     def __init__(self, driver):
         self.driver = driver

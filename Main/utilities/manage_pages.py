@@ -3,7 +3,7 @@ from selenium import webdriver
 from Main.page_objects.accounts_overview import AccountsOverviewPage
 from Main.page_objects.login_page import LoginPage
 from Main.page_objects.main_page import MainPage
-from Main.page_objects.open_new_acount_po import OpenNewAccountPo
+from Main.page_objects.open_new_acount_page import OpenNewAccountPage
 from Main.page_objects.register_page import RegisterPage
 
 login_page = None
@@ -22,5 +22,5 @@ class Manage_Pages:
         cls.login_page = LoginPage(driver)
         cls.register_page = RegisterPage(driver)
         cls.main_page = MainPage(driver)
-        cls.open_new_account_page = OpenNewAccountPo(driver)
+        cls.open_new_account_page = OpenNewAccountPage(driver)
         cls.acount_overview = AccountsOverviewPage(driver)
