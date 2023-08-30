@@ -8,7 +8,7 @@ from Main.utilities.manage_pages import Manage_Pages
 
 
 class WebWorkFlow:
-    web_actions = None
+
     def __init__(self, driver):
         self.web_actions = WebActions(driver)
 
