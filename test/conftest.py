@@ -23,7 +23,7 @@ def init_web(request):
     wwf = WebWorkFlow(driver)  # Create a single instance of WebWorkFlow
     request.cls.wwf = wwf  # Set the instance to the test class attribute
     yield   # Yield the driver object
-    time.sleep(5)
+    time.sleep(10)
     driver.quit()
 
 

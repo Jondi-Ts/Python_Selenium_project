@@ -11,9 +11,6 @@ from Main.work_flow.webworkflow import WebWorkFlow
 class Test_web():
 
     def test_01(self):
-        self.wwf.register("Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel3", "daniel3")
-    # time.sleep(2)
-    # Web_Wf.log_out()
-    # time.sleep(2)
-    # Web_Wf.login("daniel2","daniel2")
-    #     self.wwf.get_table_date("daniel3", "daniel3")
+        # self.wwf.register("Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel3", "daniel3")
+        self.wwf.login("daniel3", "daniel3")
+        self.wwf.create_new_account("SAVINGS")

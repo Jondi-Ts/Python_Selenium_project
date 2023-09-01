@@ -22,3 +22,7 @@ class WebActions:
     def select_from_dropdown(self, elem: WebElement, dropdown_choice_text: str):
         select = Select(elem)
         select.select_by_visible_text(dropdown_choice_text)
+
+
+    def clear_key(self, elem: webelement):
+        elem.clear()
