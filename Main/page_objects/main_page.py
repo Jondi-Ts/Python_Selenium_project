@@ -16,16 +16,16 @@ class MainPage:
         return self.driver.find_element(By.XPATH, "//a[text()='Accounts Overview']")
 
     def transfer_funds(self):
-        return self.driver.find_element(By.XPATH, "//a[text()='Transfer Funds]")
+        return self.driver.find_element(By.XPATH, "//a[text()='Transfer Funds']")
 
     def bill_pay(self):
         return self.driver.find_element(By.XPATH, "//a[text()='Bill Pay]")
 
     def find_transactions(self):
-        return self.driver.find_element(By.XPATH, "//a[text()='Find Transactions]")
+        return self.driver.find_element(By.XPATH, "//a[text()='Find Transactions']")
 
     def update_contact_info(self):
-        return self.driver.find_element(By.XPATH, "//a[text()='Update Contact Info]")
+        return self.driver.find_element(By.XPATH, "//a[text()='Update Contact Info']")
 
     def request_loan(self):
         return self.driver.find_element(By.XPATH, "//a[text()='Request Loan]")

@@ -13,4 +13,6 @@ class Test_web():
     def test_01(self):
         # self.wwf.register("Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel3", "daniel3")
         self.wwf.login("daniel3", "daniel3")
-        self.wwf.create_new_account("SAVINGS")
+        # self.wwf.create_new_account("SAVINGS")
+        # self.wwf.transfer_money("10000", "20337")
+        self.wwf.find_transaction_by_amount("20337", "10000")

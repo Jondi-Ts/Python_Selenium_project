@@ -13,8 +13,8 @@ class WebWorkFlow:
         self.web_actions = WebActions(driver)
 
     def login(self, user_name: str, password: str):
-        self.web_actions.insert_text(Manage_Pages.login_page.get_username_field(), user_name, )
-        self.web_actions.insert_text(Manage_Pages.login_page.get_password_field(), password, )
+        self.web_actions.insert_text(Manage_Pages.login_page.get_username_field(), user_name)
+        self.web_actions.insert_text(Manage_Pages.login_page.get_password_field(), password)
         self.web_actions.click_action(Manage_Pages.login_page.login_btn())
 
     def register(self, first_name, last_name, adress_street, adress_city, adress_state, adress_zipcode,
@@ -53,12 +53,27 @@ class WebWorkFlow:
 
     def create_new_account(self, account_type: str):
         self.web_actions.click_action(Manage_Pages.main_page.open_new_acount())
+        time.sleep(1)
         self.web_actions.select_from_dropdown(Manage_Pages.open_new_account_page.new_acount_type(), account_type)
+        time.sleep(1)
         self.web_actions.click_action(Manage_Pages.open_new_account_page.open_new_account_btn())
 
-    def transfer_money(self, amount_of_money, from_account, to_account):
+    # Todo find better way to handle transfering money bug with entering ammount without refresh drop down info is undefined
+    def transfer_money(self, amount_of_money, to_account):
         self.web_actions.click_action(Manage_Pages.main_page.transfer_funds())
+        time.sleep(1)
+        self.web_actions.refresh()
+        time.sleep(1)
         self.web_actions.insert_text(Manage_Pages.transfer_funds_page.get_amount_field(), amount_of_money)
-        self.web_actions.select_from_dropdown(Manage_Pages.transfer_funds_page.get_select_from_account(),from_account)
-        self.web_actions.select_from_dropdown(Manage_Pages.transfer_funds_page.get_select_to_account(), to_account)
+        # self.web_actions.select_from_dropdown(Manage_Pages.transfer_funds_page.get_select_from_account(), from_account)
+        drop_down = Manage_Pages.transfer_funds_page.get_select_to_account()
+        self.web_actions.select_from_dropdown(drop_down, to_account)
         self.web_actions.click_action(Manage_Pages.transfer_funds_page.get_transfer_button())
+
+    def find_transaction_by_amount(self, account_number, transsaction_amount):
+        self.web_actions.click_action(Manage_Pages.main_page.find_transactions())
+        accounts_drop = Manage_Pages.find_transactions_page.get_account_dropdown()
+        self.web_actions.select_from_dropdown(accounts_drop, account_number)
+        self.web_actions.insert_text(Manage_Pages.find_transactions_page.get_transaction_amount_field(),
+                                     transsaction_amount)
+        self.web_actions.click_action(Manage_Pages.find_transactions_page.get_transaction_amount_btn_search())
