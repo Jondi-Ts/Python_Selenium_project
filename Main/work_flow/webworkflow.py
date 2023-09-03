@@ -17,23 +17,38 @@ class WebWorkFlow:
         self.web_actions.insert_text(Manage_Pages.login_page.get_password_field(), password)
         self.web_actions.click_action(Manage_Pages.login_page.login_btn())
 
-    def register(self, first_name, last_name, adress_street, adress_city, adress_state, adress_zipcode,
-                 customer_ssn: int,
-                 user_name, password):
+    def common_register_actions(self, first_name, last_name, adress_street, adress_city, adress_state,
+                                adress_zipcode,
+                                customer_ssn: int, user_name, password, confirm_password):
         self.web_actions.click_action(Manage_Pages.register_page.get_register_btn())
         self.web_actions.insert_text(Manage_Pages.register_page.get_first_name(), first_name)
         self.web_actions.insert_text(Manage_Pages.register_page.get_last_name(), last_name)
-        self.web_actions.insert_text(Manage_Pages.register_page.get_adress_street(),
-                                     adress_street)
+        self.web_actions.insert_text(Manage_Pages.register_page.get_adress_street(), adress_street)
         self.web_actions.insert_text(Manage_Pages.register_page.get_adress_city(), adress_city)
         self.web_actions.insert_text(Manage_Pages.register_page.get_adress_state(), adress_state)
-        self.web_actions.insert_text(Manage_Pages.register_page.get_adress_zipcode(),
-                                     adress_zipcode)
+        self.web_actions.insert_text(Manage_Pages.register_page.get_adress_zipcode(), adress_zipcode)
         self.web_actions.insert_text(Manage_Pages.register_page.get_customer_ssn(), customer_ssn)
         self.web_actions.insert_text(Manage_Pages.register_page.get_user_name(), user_name)
         self.web_actions.insert_text(Manage_Pages.register_page.get_password(), password)
-        self.web_actions.insert_text(Manage_Pages.register_page.get_password_confirm(), password)
+        self.web_actions.insert_text(Manage_Pages.register_page.get_password_confirm(), confirm_password)
         self.web_actions.click_action(Manage_Pages.register_page.get_complete_registration_btn())
+
+    def register(self, first_name, last_name, adress_street, adress_city, adress_state, adress_zipcode,
+                 customer_ssn: int, user_name, password, confirm_password):
+        self.common_register_actions(first_name, last_name, adress_street, adress_city, adress_state,
+                                     adress_zipcode,
+                                     customer_ssn, user_name, password, confirm_password)
+        return Manage_Pages.register_page.get_welcome_message().text
+
+    def negative_register(self, first_name, last_name, adress_street, adress_city, adress_state, adress_zipcode,
+                          customer_ssn: int, user_name, password, confirm_password, type):
+        self.common_register_actions(first_name, last_name, adress_street, adress_city, adress_state,
+                                     adress_zipcode,
+                                     customer_ssn, user_name, password, confirm_password)
+        if type == "password_confirm":
+            return Manage_Pages.register_page.get_pass_coonfirm_error_message().text
+        else:
+            return Manage_Pages.register_page.get_username_error_message.text
 
     def log_out(self):
         self.web_actions.click_action(Manage_Pages.main_page.log_out_btn())

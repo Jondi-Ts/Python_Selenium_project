@@ -1,8 +1,4 @@
-
-
-
 class Verifications:
-    @staticmethod
     def verify_equals(actual, expected):
         assert actual == expected, f"Expected '{expected}', but got '{actual}'"
 
@@ -17,4 +13,3 @@ class Verifications:
 
     def verify_not_in(item, container):
         assert item not in container, f"'{item}' found in {container} but it shouldn't be"
-
