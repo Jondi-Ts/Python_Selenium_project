@@ -6,6 +6,9 @@ class MainPage:
     def __init__(self, driver):
         self.driver = driver
 
+    def account_overview_title(self):
+        return self.driver.find_element(By.CLASS_NAME, "title")
+
     def log_out_btn(self):
         return self.driver.find_element(By.XPATH, "//a[text()='Log Out']")
 

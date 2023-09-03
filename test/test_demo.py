@@ -11,7 +11,7 @@ class Test_web():
 
     def test_tc_001(self):
         Verifications.verify_equals(
-            self.wwf.register("Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel7",
+            self.wwf.register("Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel3",
                               "daniel3", "daniel3"), expected.registration_welcome)
 
     def test_tc_002(self):
@@ -24,3 +24,6 @@ class Test_web():
         Verifications.verify_equals(self.wwf.negative_register(
             "Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel7",
             "daniel3", "daniel3", None), expected.reg_username_err)
+
+    def test_tc_004(self):
+        Verifications.verify_equals(self.wwf.login("daniel3","daniel3"), expected.title_after_login)
