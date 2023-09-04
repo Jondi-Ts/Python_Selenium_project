@@ -1,3 +1,4 @@
+from selenium.common import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webelement import WebElement
@@ -30,6 +31,19 @@ class WebActions:
         elem = self.wait.until(EC.element_to_be_clickable(elem))
         elem.clear()
 
-
     def refresh(self):
         self.driver.refresh()
+
+    def is_element_present(self, locator_strategy, value):
+        try:
+            locator = (locator_strategy, value)
+            element = self.wait.until(
+                EC.presence_of_element_located(locator)
+            )
+            return True
+        except NoSuchElementException:
+            return False
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return False
+

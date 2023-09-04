@@ -4,6 +4,7 @@ import pytest
 
 from Main.extensions.verifications import Verifications
 from Main.utilities import expected
+from Main.utilities.manage_pages import Manage_Pages
 
 
 @pytest.mark.usefixtures('init_web')
@@ -34,4 +35,5 @@ class Test_web():
     def test_tc_006(self):
         self.wwf.login("daniel3", "daniel3", None)
         self.wwf.log_out()
-        Verifications
+
+        Verifications.verify_true(self.wwf.check_username_field_presence())

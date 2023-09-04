@@ -98,3 +98,7 @@ class WebWorkFlow:
         self.web_actions.insert_text(Manage_Pages.find_transactions_page.get_transaction_amount_field(),
                                      transsaction_amount)
         self.web_actions.click_action(Manage_Pages.find_transactions_page.get_transaction_amount_btn_search())
+
+    def check_username_field_presence(self):
+        parameters = Manage_Pages.login_page.get_customer_login_title()
+        return self.web_actions.is_element_present(parameters[0], parameters[1])

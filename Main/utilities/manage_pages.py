@@ -8,8 +8,6 @@ from Main.page_objects.open_new_acount_page import OpenNewAccountPage
 from Main.page_objects.register_page import RegisterPage
 from Main.page_objects.transfer_funds import TransferFundsPage
 
-login_page = None
-register_page = None
 
 
 class Manage_Pages:

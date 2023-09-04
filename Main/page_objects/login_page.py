@@ -18,3 +18,7 @@ class LoginPage:
     # error message when logging wrong credentials
     def get_error_login_message(self):
         return self.driver.find_element(By.CLASS_NAME, "title")
+
+    def get_customer_login_title(self):
+        parameters = [By.XPATH, "//h2[text()='Customer Login']"]
+        return parameters
