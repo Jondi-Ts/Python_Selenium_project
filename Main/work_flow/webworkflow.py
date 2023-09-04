@@ -12,11 +12,16 @@ class WebWorkFlow:
     def __init__(self, driver):
         self.web_actions = WebActions(driver)
 
-    def login(self, user_name: str, password: str):
+    def login(self, user_name: str, password: str, type):
         self.web_actions.insert_text(Manage_Pages.login_page.get_username_field(), user_name)
         self.web_actions.insert_text(Manage_Pages.login_page.get_password_field(), password)
         self.web_actions.click_action(Manage_Pages.login_page.login_btn())
-        return Manage_Pages.main_page.account_overview_title().text
+        if type == "negative":
+            return Manage_Pages.login_page.get_error_login_message().text
+        elif type == "positive":
+            return Manage_Pages.main_page.account_overview_title().text
+        else:
+            return None
 
     def common_register_actions(self, first_name, last_name, adress_street, adress_city, adress_state,
                                 adress_zipcode,

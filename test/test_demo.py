@@ -26,4 +26,12 @@ class Test_web():
             "daniel3", "daniel3", None), expected.reg_username_err)
 
     def test_tc_004(self):
-        Verifications.verify_equals(self.wwf.login("daniel3","daniel3"), expected.title_after_login)
+        Verifications.verify_equals(self.wwf.login("daniel3", "daniel3", None), expected.title_after_login)
+
+    def test_tc_005(self):
+        Verifications.verify_equals(self.wwf.login("jndi", "sf", "negative"), expected.wrong_login_message)
+
+    def test_tc_006(self):
+        self.wwf.login("daniel3", "daniel3", None)
+        self.wwf.log_out()
+        Verifications
