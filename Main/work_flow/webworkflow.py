@@ -76,10 +76,11 @@ class WebWorkFlow:
     def create_new_account(self, account_type: str):
         self.web_actions.click_action(Manage_Pages.main_page.open_new_acount())
         time.sleep(1)
-        self.web_actions.select_from_dropdown(Manage_Pages.open_new_account_page.new_acount_type(), account_type)
+        self.web_actions.select_from_dropdown(Manage_Pages.open_new_account_page.new_acount_type(), account_type,
+                                              "text", None)
         time.sleep(1)
         self.web_actions.click_action(Manage_Pages.open_new_account_page.open_new_account_btn())
-        if self.web_actions.is_element_present(By.XPATH,"//h1[text()='Account Opened!']"):
+        if self.web_actions.is_element_present(By.XPATH, "//h1[text()='Account Opened!']"):
             return Manage_Pages.open_new_account_page.get_account_opened_message().text
 
     # Todo find better way to handle transfering money bug with entering ammount without refresh drop down info is undefined
@@ -89,15 +90,14 @@ class WebWorkFlow:
         self.web_actions.refresh()
         time.sleep(1)
         self.web_actions.insert_text(Manage_Pages.transfer_funds_page.get_amount_field(), amount_of_money)
-        # self.web_actions.select_from_dropdown(Manage_Pages.transfer_funds_page.get_select_from_account(), from_account)
         drop_down = Manage_Pages.transfer_funds_page.get_select_to_account()
-        self.web_actions.select_from_dropdown(drop_down, to_account)
+        self.web_actions.select_from_dropdown(drop_down, to_account, "text", None)
         self.web_actions.click_action(Manage_Pages.transfer_funds_page.get_transfer_button())
 
     def find_transaction_by_amount(self, account_number, transsaction_amount):
         self.web_actions.click_action(Manage_Pages.main_page.find_transactions())
         accounts_drop = Manage_Pages.find_transactions_page.get_account_dropdown()
-        self.web_actions.select_from_dropdown(accounts_drop, account_number)
+        self.web_actions.select_from_dropdown(accounts_drop, account_number, "text", None)
         self.web_actions.insert_text(Manage_Pages.find_transactions_page.get_transaction_amount_field(),
                                      transsaction_amount)
         self.web_actions.click_action(Manage_Pages.find_transactions_page.get_transaction_amount_btn_search())

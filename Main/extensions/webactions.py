@@ -22,10 +22,13 @@ class WebActions:
         elem = self.wait.until(EC.visibility_of(elem))
         return elem.text
 
-    def select_from_dropdown(self, elem: WebElement, dropdown_choice_text):
-        # elem = self.wait.until(EC.element_to_be_clickable(elem))
-        dropdown = Select(elem)
-        dropdown.select_by_visible_text(dropdown_choice_text)
+    def select_from_dropdown(self, elem: WebElement, dropdown_choice_text, type, index):
+        if type == "text":
+            dropdown = Select(elem)
+            dropdown.select_by_visible_text(dropdown_choice_text)
+        elif type == "index":
+            dropdown = Select(elem)
+            dropdown.select_by_index(index)
 
     def clear_key(self, elem: WebElement):
         elem = self.wait.until(EC.element_to_be_clickable(elem))
@@ -46,4 +49,3 @@ class WebActions:
         except Exception as e:
             print(f"An error occurred: {e}")
             return False
-
