@@ -22,11 +22,11 @@ class WebActions:
         elem = self.wait.until(EC.visibility_of(elem))
         return elem.text
 
-    def select_from_dropdown(self, elem: WebElement, dropdown_choice_text, type, index):
-        if type == "text":
+    def select_from_dropdown(self, elem: WebElement, dropdown_choice_text, select_type, index):
+        if select_type == "text":
             dropdown = Select(elem)
             dropdown.select_by_visible_text(dropdown_choice_text)
-        elif type == "index":
+        elif select_type == "index":
             dropdown = Select(elem)
             dropdown.select_by_index(index)
 

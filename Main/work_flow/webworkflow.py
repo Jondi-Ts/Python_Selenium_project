@@ -13,13 +13,13 @@ class WebWorkFlow:
     def __init__(self, driver):
         self.web_actions = WebActions(driver)
 
-    def login(self, user_name: str, password: str, type):
+    def login(self, user_name: str, password: str, login_type):
         self.web_actions.insert_text(Manage_Pages.login_page.get_username_field(), user_name)
         self.web_actions.insert_text(Manage_Pages.login_page.get_password_field(), password)
         self.web_actions.click_action(Manage_Pages.login_page.login_btn())
-        if type == "negative":
+        if login_type == "negative":
             return Manage_Pages.login_page.get_error_login_message().text
-        elif type == "positive":
+        elif login_type == "positive":
             return Manage_Pages.main_page.account_overview_title().text
         else:
             return None
@@ -91,8 +91,10 @@ class WebWorkFlow:
         time.sleep(1)
         self.web_actions.insert_text(Manage_Pages.transfer_funds_page.get_amount_field(), amount_of_money)
         drop_down = Manage_Pages.transfer_funds_page.get_select_to_account()
-        self.web_actions.select_from_dropdown(drop_down, to_account, "text", None)
+        self.web_actions.select_from_dropdown(drop_down, to_account, "index", to_account)
         self.web_actions.click_action(Manage_Pages.transfer_funds_page.get_transfer_button())
+        if self.web_actions.is_element_present(By.XPATH, "//h1[text()='Transfer Complete!']"):
+            return Manage_Pages.transfer_funds_page.get_transfer_result_message().text
 
     def find_transaction_by_amount(self, account_number, transsaction_amount):
         self.web_actions.click_action(Manage_Pages.main_page.find_transactions())

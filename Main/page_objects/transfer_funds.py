@@ -23,12 +23,15 @@ class TransferFundsPage:
         # print(drop_down.get_attribute("outerHTML"))
         return drop_down
 
-
     def get_transfer_button(self):
         return self.driver.find_element(By.XPATH, "//input[@type='submit']")
 
+    # todo RESULT
 
-# todo RESULT
+    def get_transfer_result_message(self):
+        return self.driver.find_element(By.XPATH, "//h1[text()='Transfer Complete!']")
+
+
 '''
 Transfer Complete!
 $56756.00 has been transferred from account #19338 to account #19338.
