@@ -1,6 +1,7 @@
 import time
 
 import pytest
+from selenium.webdriver.common.by import By
 
 from Main import utilities
 from Main.extensions.webactions import WebActions
@@ -78,6 +79,8 @@ class WebWorkFlow:
         self.web_actions.select_from_dropdown(Manage_Pages.open_new_account_page.new_acount_type(), account_type)
         time.sleep(1)
         self.web_actions.click_action(Manage_Pages.open_new_account_page.open_new_account_btn())
+        if self.web_actions.is_element_present(By.XPATH,"//h1[text()='Account Opened!']"):
+            return Manage_Pages.open_new_account_page.get_account_opened_message().text
 
     # Todo find better way to handle transfering money bug with entering ammount without refresh drop down info is undefined
     def transfer_money(self, amount_of_money, to_account):

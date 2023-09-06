@@ -15,11 +15,11 @@ class OpenNewAccountPage:
     def open_new_account_btn(self):
         return self.driver.find_element(By.XPATH, "//input[@class= 'button']")
 
+    # after opening
+    def get_account_opened_message(self):
+        return self.driver.find_element(By.XPATH, "//h1[text()='Account Opened!']")
 
-
-
-
-    #TODO add test logic
+    # TODO add test logic
 
     '''
     Account Opened!
