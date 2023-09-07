@@ -10,7 +10,7 @@ from Main.utilities.manage_pages import Manage_Pages
 
 @pytest.mark.usefixtures('init_web')
 class TestBank:
-    @pytest.mark.my_suite
+    # @pytest.mark.my_suite
     def test_tc_001(self):
         Verifications.verify_equals(
             self.wwf.register("Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel3",
@@ -40,11 +40,15 @@ class TestBank:
 
     @pytest.mark.my_suite
     def test_tc_007(self):
-        # self.wwf.login("daniel3", "daniel3", None)
+        self.wwf.login("daniel3", "daniel3", None)
         Verifications.verify_equals(self.wwf.create_new_account("SAVINGS"), new_account_opened_message)
 
     @pytest.mark.my_suite
     def test_tc_008(self):
-        self.wwf.login("daniel3", "daniel3", None)
+        # self.wwf.login("daniel3", "daniel3", None)
         Verifications.verify_equals(self.wwf.transfer_money("1000", 1),
                                     money_transfered_result_message)
+    @pytest.mark.my_suite
+    def test_tc_009(self):
+        # self.wwf.login("daniel3", "daniel3", None)
+        Verifications.verify_equals(self.wwf.find_transaction_by_amount(None, 1000), "1000")

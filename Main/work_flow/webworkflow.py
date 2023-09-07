@@ -1,3 +1,4 @@
+import re
 import time
 
 import pytest
@@ -97,12 +98,20 @@ class WebWorkFlow:
             return Manage_Pages.transfer_funds_page.get_transfer_result_message().text
 
     def find_transaction_by_amount(self, account_number, transsaction_amount):
+        result = None
         self.web_actions.click_action(Manage_Pages.main_page.find_transactions())
         accounts_drop = Manage_Pages.find_transactions_page.get_account_dropdown()
-        self.web_actions.select_from_dropdown(accounts_drop, account_number, "text", None)
+        self.web_actions.select_from_dropdown(accounts_drop, None, "index", 0)
         self.web_actions.insert_text(Manage_Pages.find_transactions_page.get_transaction_amount_field(),
                                      transsaction_amount)
         self.web_actions.click_action(Manage_Pages.find_transactions_page.get_transaction_amount_btn_search())
+        if self.web_actions.is_element_present(By.XPATH, "//span[@class='ng-binding ng-scope']"):
+            ammount = Manage_Pages.find_transactions_page.get_transaction_result_amount().text
+            pattern = r'\d+'
+            match = re.search(pattern, ammount)
+            if match:
+                result = match.group()
+            return result
 
     def check_username_field_presence(self):
         parameters = Manage_Pages.login_page.get_customer_login_title()

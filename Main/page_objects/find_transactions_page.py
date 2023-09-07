@@ -27,8 +27,11 @@ class FindTransferFundsPage:
     def get_transaction_amount_btn_search(self):
         return self.driver.find_element(By.XPATH, '//button[@ng-click="criteria.searchType = \'AMOUNT\'"]')
 
+    # Todo use for tests
+    def get_transaction_result_amount(self):
+        return self.driver.find_element(By.XPATH, "//span[@class='ng-binding ng-scope']")
 
-# Todo use for tests
+
 '''
 Transaction Results
 Date	Transaction	Debit (-)	Credit (+)
