@@ -4,15 +4,19 @@ from Main.extensions.verifications import Verifications
 from Main.utilities.expected import *
 
 
-
 @pytest.mark.usefixtures('init_web')
+@allure.severity(allure.severity_level.NORMAL)
+@allure.description("test class started")
 class TestBank:
-    @pytest.mark.skip("already registered so skip")
+    # @pytest.mark.skip("already registered so skip")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.description("registration test")
     @pytest.mark.my_suite
+    @pytest.mark.skip("already registered so no need to run it again")
     def test_tc_001(self):
         Verifications.verify_equals(
-            self.wwf.register("Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel3",
-                              "daniel3", "daniel3"), registration_welcome)
+            self.wwf.register("Mickael", "Jackson", "Haporzim", "Holon", "Gush Daan", 1234567, 987654321, "daniel6",
+                              "daniel6", "daniel6"), registration_welcome)
 
     @pytest.mark.negative
     def test_tc_002(self):
@@ -41,7 +45,7 @@ class TestBank:
 
     @pytest.mark.my_suite
     def test_tc_007(self):
-        self.wwf.login("daniel3", "daniel3", None)
+        self.wwf.login("daniel6", "daniel6", None)
         Verifications.verify_equals(self.wwf.create_new_account("SAVINGS"), new_account_opened_message)
 
     @pytest.mark.my_suite
@@ -53,7 +57,7 @@ class TestBank:
     @pytest.mark.my_suite
     def test_tc_009(self):
         # self.wwf.login("daniel3", "daniel3", None)
-        Verifications.verify_equals(self.wwf.find_transaction_by_amount(None, 1000, "1000")
+        Verifications.verify_equals(self.wwf.find_transaction_by_amount(None, 1000), "1000")
 
     @pytest.mark.negative
     def test_tc_010(self):

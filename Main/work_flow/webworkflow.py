@@ -1,6 +1,7 @@
 import re
 import time
 
+import allure
 import pytest
 from selenium.webdriver.common.by import By
 
@@ -40,7 +41,7 @@ class WebWorkFlow:
         self.web_actions.insert_text(Manage_Pages.register_page.get_password(), password)
         self.web_actions.insert_text(Manage_Pages.register_page.get_password_confirm(), confirm_password)
         self.web_actions.click_action(Manage_Pages.register_page.get_complete_registration_btn())
-
+    @allure.step("Registering function from web workflow")
     def register(self, first_name, last_name, adress_street, adress_city, adress_state, adress_zipcode,
                  customer_ssn: int, user_name, password, confirm_password):
         self.common_register_actions(first_name, last_name, adress_street, adress_city, adress_state,

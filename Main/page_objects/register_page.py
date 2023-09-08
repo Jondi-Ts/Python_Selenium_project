@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 
@@ -6,12 +7,15 @@ class RegisterPage:
     def __init__(self, driver):
         self.driver = driver
 
+    @allure.step("Getting registering button")
     def get_register_btn(self):
         return self.driver.find_element(By.XPATH, "//a[contains(text(), 'Register')]")
 
+    @allure.step("Getting filed for first naem")
     def get_first_name(self):
         return self.driver.find_element(By.ID, "customer.firstName")
 
+    @allure.step("Getting input field for last name")
     def get_last_name(self):
         return self.driver.find_element(By.ID, "customer.lastName")
 
@@ -30,12 +34,15 @@ class RegisterPage:
     def get_customer_ssn(self):
         return self.driver.find_element(By.ID, "customer.ssn")
 
+    @allure.step("Getting user name field")
     def get_user_name(self):
         return self.driver.find_element(By.ID, "customer.username")
 
+    @allure.step("Getting password field")
     def get_password(self):
         return self.driver.find_element(By.ID, "customer.password")
 
+    @allure.step("Getting password confirm field")
     def get_password_confirm(self):
         return self.driver.find_element(By.ID, "repeatedPassword")
 
