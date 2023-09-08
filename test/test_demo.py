@@ -60,7 +60,7 @@ class TestBank:
         Verifications.verify_equals(self.wwf.find_transaction_by_amount(None, 1000), "1000")
 
     @pytest.mark.negative
-    def test_tc_010(self):
-        pytest.skip("skipped for now")
-        # self.wwf.login("daniel3", "daniel3", None)
+    def test_jondi_slav(self):
+        # pytest.skip("skipped for now")
+        self.wwf.login("daniel6", "daniel6", None)
         Verifications.verify_equals(self.wwf.find_transaction_by_amount(None, 1010101001), "1010101001")
